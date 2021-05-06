@@ -1007,6 +1007,16 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@headlessui/vue@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@headlessui/vue/-/vue-1.1.1.tgz#62db45068e0906696e4c1cd4c421f34c9e891798"
+  integrity sha512-7FalIR+WbTI+mQWhOCagCbAGIp4pscN698Hs5G50PabmZ7inwGaXSmQ2CeuvAalPsjGqDQfGdXaQKQVlBqZTSQ==
+
+"@heroicons/vue@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@heroicons/vue/-/vue-1.0.1.tgz#bd37662a45ed031d9b4ab1c860574e2174ca1bd3"
+  integrity sha512-pClbScVNpkBCHdM86+EAjQ5iUAs1PVjRHDFRNImQQyot75KrAk4SDfeKGDkQqPaGdJ9ZHIK13cl2W0eYc29QWg==
+
 "@intervolga/optimize-cssnano-plugin@^1.0.5":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@intervolga/optimize-cssnano-plugin/-/optimize-cssnano-plugin-1.0.6.tgz#be7c7846128b88f6a9b1d1261a0ad06eb5c0fdf8"
@@ -12438,11 +12448,6 @@ vue-eslint-parser@^7.0.0, vue-eslint-parser@^7.6.0:
     espree "^6.2.1"
     esquery "^1.4.0"
     lodash "^4.17.15"
-
-vue-google-oauth2@^1.5.8:
-  version "1.5.8"
-  resolved "https://registry.yarnpkg.com/vue-google-oauth2/-/vue-google-oauth2-1.5.8.tgz#9ed963aaafc1e80a276c195499024f369b02d5c8"
-  integrity sha512-mATpPrLjzjAoUwgFC2feEZEhyoFyItPQSdEgX3m+rHI17sXLEdKzcMLmk+8B1obu4J/YVuVRR9A1afs+4VEk0Q==
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
