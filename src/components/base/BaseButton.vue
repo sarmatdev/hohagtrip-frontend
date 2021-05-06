@@ -25,8 +25,7 @@ export default defineComponent({
     color: {
       type: String,
       default: 'green',
-      validator: (value: string) =>
-        ['primary', 'primary-outline', 'link'].includes(value),
+      validator: (value: string) => ['green', 'red', 'blue'].includes(value),
     },
   },
   computed: {
