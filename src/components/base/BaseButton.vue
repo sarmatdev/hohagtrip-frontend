@@ -1,38 +1,69 @@
 <template>
-  <component :is="tag" :class="[$style.baseButton]" v-bind="$attrs">
+  <component
+    :is="rootTag"
+    :to="to"
+    :class="[$style.baseButton, $style[`baseButton--${color}`]]"
+    v-bind="$attrs"
+  >
     <BaseLoader v-if="loading" />
     <slot v-else />
   </component>
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue'
+export default defineComponent({
   props: {
     tag: {
       type: String,
       default: 'button',
     },
+    to: {
+      type: String,
+    },
     loading: Boolean,
+    color: {
+      type: String,
+      default: 'green',
+      validator: (value: string) => ['green', 'red', 'blue'].includes(value),
+    },
   },
-}
+  computed: {
+    rootTag(): string {
+      if (this.to) {
+        return 'router-link'
+      }
+
+      return this.tag
+    },
+  },
+})
 </script>
 
 <style module lang="scss">
 .baseButton {
   min-width: 4rem;
-  @apply flex items-center justify-center bg-green-500 text-white px-3 py-2 rounded-md cursor-pointer outline-none transition-colors duration-200;
+  @apply flex items-center justify-center text-white px-3 py-2 rounded-md cursor-pointer outline-none transition-colors duration-200;
 
   &:disabled {
     cursor: not-allowed;
     @apply bg-gray-500;
   }
 
-  &-primary {
-    @apply bg-blue-700 text-blue-100;
+  &:hover {
+    @apply shadow-lg;
+  }
 
-    &:hover {
-      @apply bg-blue-800;
-    }
+  &--green {
+    @apply bg-green-500 hover:bg-green-600;
+  }
+
+  &--blue {
+    @apply bg-blue-500 hover:bg-blue-600;
+  }
+
+  &--red {
+    @apply bg-red-500 hover:bg-red-600;
   }
 }
 </style>
