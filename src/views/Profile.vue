@@ -1,30 +1,21 @@
 <template>
   <div class="profile">
-    <ul>
-      <li v-for="(item, i) in user" :key="i">{{ item }}</li>
-    </ul>
+    <ProfileSidebar />
   </div>
 </template>
 
 <script lang="ts">
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { defineComponent } from 'vue'
-import { useStore } from 'vuex'
+import ProfileSidebar from '@/components/common/ProfileSidebar.vue'
 export default defineComponent({
-  setup() {
-    const store = useStore()
-
-    return {
-      store,
-    }
-  },
-  computed: {
-    user() {
-      // @ts-ignore
-      return this.store.getters['auth/user']
-    },
+  components: {
+    ProfileSidebar,
   },
 })
 </script>
 
-<style></style>
+<style lang="scss">
+.profile {
+  // @apply flex;
+}
+</style>

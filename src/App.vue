@@ -19,6 +19,6 @@ export default defineComponent({
 
 <style lang="scss">
 .layout {
-  @apply container min-h-screen px-4 md:px-0 mx-auto w-full pt-16 pb-4 break-words bg-gray-100;
+  @apply container max-w-screen-xl mx-auto px-2 sm:px-6 lg:px-8 min-h-screen w-full pt-16 pb-4 break-words bg-gray-100;
 }
 </style>
