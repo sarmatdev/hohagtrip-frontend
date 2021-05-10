@@ -25,7 +25,6 @@ export default defineComponent({
 })
 </script>
 
-<<<<<<< HEAD
 <style lang="scss">
 .profile {
   .navbar {
@@ -33,6 +32,3 @@ export default defineComponent({
   }
 }
 </style>
-=======
-<style></style>
->>>>>>> e97202c496d961cd44f5d87acd31336f20a193b6
