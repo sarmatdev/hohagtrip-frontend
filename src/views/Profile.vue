@@ -1,34 +1,21 @@
 <template>
   <div class="profile">
-    <aside class="navbar">navbar</aside>
+    <ProfileSidebar />
   </div>
 </template>
 
 <script lang="ts">
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { defineComponent } from 'vue'
-import { useStore } from 'vuex'
+import ProfileSidebar from '@/components/common/ProfileSidebar.vue'
 export default defineComponent({
-  setup() {
-    const store = useStore()
-
-    return {
-      store,
-    }
-  },
-  computed: {
-    user() {
-      // @ts-ignore
-      return this.store.getters['auth/user']
-    },
+  components: {
+    ProfileSidebar,
   },
 })
 </script>
 
 <style lang="scss">
 .profile {
-  .navbar {
-    @apply text-gray-800;
-  }
+  // @apply flex;
 }
 </style>
