@@ -53,7 +53,7 @@ export default defineComponent({
 
 <style lang="scss">
 .header {
-  @apply w-full h-16 flex items-center justify-between px-8 py-1 fixed shadow bg-white;
+  @apply w-full h-16 flex items-center justify-between px-8 py-1 fixed shadow-md bg-white;
 
   .logo {
     @apply flex items-center;
@@ -65,7 +65,7 @@ export default defineComponent({
     &__title {
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      @apply text-3xl bg-gradient-to-r from-green-400 to-blue-500;
+      @apply text-3xl bg-gradient-to-r from-green-400 to-blue-500 hidden sm:block;
     }
   }
 

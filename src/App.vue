@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <main class="container min-h-screen mx-auto w-full pt-16 pb-4 bg-gray-100">
+    <main class="layout">
       <router-view />
     </main>
   </div>
@@ -17,4 +17,8 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.layout {
+  @apply container min-h-screen px-4 md:px-0 mx-auto w-full pt-16 pb-4 break-words bg-gray-100;
+}
+</style>
