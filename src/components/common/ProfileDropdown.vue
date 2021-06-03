@@ -59,7 +59,7 @@
 
 <script lang="ts">
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, inject } from 'vue'
 import { useStore } from 'vuex'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { BellIcon, ChevronDownIcon } from '@heroicons/vue/outline'
@@ -76,10 +76,12 @@ export default defineComponent({
   setup() {
     const store = useStore()
     const open = ref(false)
+    const Vue3GoogleOauth = inject('Vue3GoogleOauth')
 
     return {
       store,
       open,
+      Vue3GoogleOauth,
     }
   },
   computed: {
@@ -93,7 +95,9 @@ export default defineComponent({
     },
   },
   methods: {
-    logout() {
+    async logout() {
+      // @ts-ignore
+      await this.$gAuth.signOut()
       // @ts-ignore
       this.store.dispatch('auth/logout')
     },
