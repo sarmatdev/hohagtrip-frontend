@@ -1,13 +1,8 @@
 import { createStore, createLogger } from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
-import auth from './modules/auth'
+import modules from './modules'
 
 export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {
-    auth,
-  },
+  modules,
   plugins: [createPersistedState(), createLogger()],
 })
