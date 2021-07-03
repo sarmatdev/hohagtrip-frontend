@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
+// @ts-nocheck
 import { reactive, readonly } from 'vue'
 
 const Vue3GoogleOauth = reactive({
