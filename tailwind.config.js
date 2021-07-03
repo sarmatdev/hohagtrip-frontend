@@ -18,7 +18,7 @@ module.exports = {
         content: ['Nunito', 'sans-serif'],
       },
       colors: {
-        'litepie-primary': colors.lightBlue,
+        'litepie-primary': colors.emerald,
         'litepie-secondary': colors.coolGray,
       },
     },
