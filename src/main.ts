@@ -6,6 +6,7 @@ import router from './router'
 import store from './store'
 import './styles/tailwind.css'
 import { registerBaseComponents } from '@/helpers/registerBaseComponents'
+import loadPlugins from './helpers/loadPlugins'
 
 export const app = createApp(App)
 
@@ -18,6 +19,8 @@ const gAuthOptions = {
   prompt: 'consent',
   fetch_basic_profile: true,
 }
+
+loadPlugins(['litepie-datepicker'])
 
 app.use(GAuth, gAuthOptions)
 
