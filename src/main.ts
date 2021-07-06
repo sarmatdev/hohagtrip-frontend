@@ -5,6 +5,7 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import './styles/tailwind.css'
+import './styles/normalize.scss'
 import { registerBaseComponents } from '@/helpers/registerBaseComponents'
 import loadPlugins from './helpers/loadPlugins'
 
