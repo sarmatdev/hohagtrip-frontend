@@ -1,33 +1,43 @@
 <template>
-  <div>
-    <div>
-      <h1>IsInit: {{ Vue3GoogleOauth.isInit }}</h1>
-      <h1>IsAuthorized: {{ Vue3GoogleOauth.isAuthorized }}</h1>
-      <h2 v-if="user">signed user: {{ user }}</h2>
-      <base-button
-        @click="handleClickSignIn"
-        :disabled="!Vue3GoogleOauth.isInit || Vue3GoogleOauth.isAuthorized"
-      >
-        sign in
-      </base-button>
-      <base-button
-        @click="handleClickGetAuthCode"
-        :disabled="!Vue3GoogleOauth.isInit"
-      >
-        get authCode
-      </base-button>
-      <base-button
-        @click="handleClickSignOut"
-        :disabled="!Vue3GoogleOauth.isAuthorized"
-      >
-        sign out
-      </base-button>
-      <base-button
-        @click="handleClickDisconnect"
-        :disabled="!Vue3GoogleOauth.isAuthorized"
-      >
-        disconnect
-      </base-button>
+  <div class="flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-md">
+      <img
+        class="mx-auto h-12 w-auto"
+        src="@/assets/images/logo.svg"
+        alt="Workflow"
+      />
+      <h2 class="mt-6 mb-6 text-center text-3xl font-bold text-gray-900">
+        Войдите в свой аккаунт
+      </h2>
+    </div>
+
+    <div class="sm:mx-auto sm:w-full sm:max-w-md">
+      <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <div>
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-gray-300" />
+            </div>
+            <div class="relative flex justify-center text-sm">
+              <span class="px-2 bg-white text-gray-500">
+                Войдите с помощью
+              </span>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <base-button
+              @click="handleClickSignIn"
+              :disabled="
+                !Vue3GoogleOauth.isInit || Vue3GoogleOauth.isAuthorized
+              "
+              class="w-full"
+              color="red"
+              >google</base-button
+            >
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -36,13 +46,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { defineComponent, inject } from 'vue'
 import { useStore } from 'vuex'
-
 export default defineComponent({
-  data() {
-    return {
-      user: '',
-    }
-  },
   methods: {
     async handleClickSignIn() {
       try {
@@ -51,46 +55,21 @@ export default defineComponent({
         if (!googleUser) {
           return null
         }
-        this.user = googleUser.getBasicProfile().getEmail()
         console.log(googleUser.getAuthResponse())
         const { id_token: idToken } = googleUser.getAuthResponse()
-        this.store.dispatch('auth/googleAuth', idToken)
+        this.store.dispatch('auth/googleAuth', idToken).then(() => {
+          this.$router.push('/profile')
+        })
       } catch (error) {
         //on fail do something
         console.error(error)
         return null
       }
-    },
-    async handleClickGetAuthCode() {
-      try {
-        // @ts-ignore
-        const authCode = await this.$gAuth.getAuthCode()
-        console.log('authCode', authCode)
-      } catch (error) {
-        //on fail do something
-        console.error(error)
-        return null
-      }
-    },
-    async handleClickSignOut() {
-      try {
-        // @ts-ignore
-        await this.$gAuth.signOut()
-        // @ts-ignore
-        console.log('isAuthorized', this.Vue3GoogleOauth.isAuthorized)
-        this.user = ''
-      } catch (error) {
-        console.error(error)
-      }
-    },
-    handleClickDisconnect() {
-      window.location.href = `https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=${window.location.href}`
     },
   },
   setup() {
     const store = useStore()
     const Vue3GoogleOauth = inject('Vue3GoogleOauth')
-
     return {
       Vue3GoogleOauth,
       store,
